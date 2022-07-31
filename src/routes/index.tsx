@@ -29,13 +29,13 @@ export default function AppRouter() {
         <Route path="/admin" element={<AuthProvider />}>
           <Route path="login" element={<LoginForm />} />
           <Route element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
             <Route path="acopios" element={<Acopios />} />
             <Route path="clientes" element={<Clientes />}>
               <Route path="panel" element={<PanelCliente />} />
             </Route>
             <Route path="compras" element={<Compras />} />
             <Route path="comprobantes" element={<Comprobantes />} />
-            <Route path="dashboard" element={<Dashboard />} />
             <Route path="listaPrecios" element={<ListaPrecios />} />
             <Route path="materiales" element={<Materiales />} />
             <Route path="presupuesto" element={<Presupuesto />} />
