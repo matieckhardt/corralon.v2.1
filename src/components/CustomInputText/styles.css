@@ -1,0 +1,15 @@
+
+.input_group{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.input_item{
+  height: 50px;
+
+}
+
+.text_error{
+  color: rgb(248, 68, 68);
+  font-weight: bold;
+
+}
