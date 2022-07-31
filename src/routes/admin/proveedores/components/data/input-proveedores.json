@@ -1,0 +1,135 @@
+[
+  {
+    "type": "input",
+    "name": "nombre",
+    "placeholder": "Ingrese nombre del proveedor...",
+    "label": "Nombre Del Proveedor",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "minLength",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "razonSocial",
+    "placeholder": "Ingrese la razón social...",
+    "label": "Razón Social",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "tipo",
+    "label": "Tipo",
+    "value": "",
+    "options": [
+        {
+            "id": 0,
+            "label": "Seleccione"
+          },
+      {
+        "id": 1,
+        "label": "Productivo"
+      },
+      {
+        "id": 2,
+        "label": "No Productivo"
+      },
+      {
+        "id": 3,
+        "label": "Inpuesto"
+      },
+      {
+        "id": 4,
+        "label": "Otro"
+      }
+    ],
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "cuit",
+    "placeholder": "N° CUIT",
+    "label": "N° CUIT(Sin Guiones)",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "fiscal",
+    "placeholder": "Responsable Incripto",
+    "label": "Condición Fiscal",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "direccion",
+    "placeholder": "Ingrese la dirección del proveedor",
+    "label": "Dirección",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "localidad",
+    "placeholder": "Ingrese la localidad del proveedor",
+    "label": "Localidad",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "tel",
+    "placeholder": "N° de teléfono",
+    "label": "Teléfono (Sin Guiones)",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "contacto",
+    "placeholder": "Ingrese el contacto",
+    "label": "Contacto",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  }
+]
