@@ -1,10 +1,11 @@
 import axios from "axios";
 
-const URL_BASE =  "https://devops.corralonbianchi.com.ar/api";
+// const URL_BASE =  "https://devops.corralonbianchi.com.ar/api";
+const URL_BASE =  "http://localhost:4000/api";
 
 export const authLogin = async (obj?: any) => {
   try {
-    return await axios.post(`${URL_BASE}signin`, obj)
+    return await axios.post(`${URL_BASE}/signin`, obj)
   } catch (error) {
     throw new Error("Usuario no registrado");
   }
