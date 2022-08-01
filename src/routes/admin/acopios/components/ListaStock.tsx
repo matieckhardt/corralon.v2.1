@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
 import { Button, Modal } from "@mui/material";
-import formJson from "./data/input-proveedores.json";
-import { Box } from "@mui/system";
-import { CustomForm } from "components/CustomForm/CustomForm";
-import { deleteProveedorDB, getAllProveedores } from "apis";
+import {  getAllMateriales } from "apis";
 
 const styles = {
   modal: {
@@ -19,15 +16,15 @@ const styles = {
     transform: "translate(-50%, -50%)",
   },
 };
-export const Listaproveedores = () => {
-  const [stateProveedores, setStateProveedores] = useState<any>([]);
+export const ListaStock = () => {
+  const [stateMateriales, setStateMateriales] = useState<any>([]);
   const [modalEditar, setModalEditar] = useState(false);
   const abrirCerrarModalEditar = () => {
     setModalEditar(!modalEditar);
   };
   const columns: GridColDef[] = [
     { field: "_id", hide: true },
-    { field: "nombre", headerName: "Nombre del Proveedor", width: 130 },
+    { field: "nombre", headerName: "Nombre del Material", width: 130 },
     { field: "razonSocial", headerName: "Razon Social", width: 130 },
     { field: "localidad", headerName: "Localidad", width: 130 },
     { field: "tel", headerName: "telefono", width: 130 },
@@ -38,7 +35,7 @@ export const Listaproveedores = () => {
       headerName: "Editar",
       sortable: false,
       renderCell: (params) => {
-        const editProveedor = () => {
+        const editMaterial = () => {
           const api: GridApi = params.api;
           const fields = api
             .getAllColumns()
@@ -53,67 +50,28 @@ export const Listaproveedores = () => {
         return (
           <Button
             sx={{ backgroundColor: "green", color: "white", fontSize:14}}
-            onClick={editProveedor}
+            onClick={editMaterial}
           >
             Editar
           </Button>
         );
       },
-    },
-    {
-      field: "eliminar",
-      headerName: "Elimnar",
-      sortable: false,
-      renderCell: (params) => {
-        const deleteProveedor = () => {
-          const api: GridApi = params.api;
-          const fields = api
-            .getAllColumns()
-            .map((c) => c.field)
-            .filter((c) => c !== "__check__" && !!c);
-          const thisRow: any = {};
-          fields.forEach((f) => {
-            thisRow[f] = params.getValue(params.id, f);
-          });
-          let elemento = thisRow;
-          deleteProveedorDB(elemento);
-          return console.log(thisRow);
-        };
-
-        return (
-          <Button
-            sx={{ backgroundColor: "#f53535", color: "white", fontSize:14 }}
-            onClick={deleteProveedor}
-          >
-            Eliminar
-          </Button>
-        );
-      },
-    },
+    }
   ];
 
-  const bodyEditar = (
-    <Box sx={styles.modal}>
-      <h3>Editar Proveedor</h3>
-      <CustomForm data={formJson} cerrar={abrirCerrarModalEditar}/>
-    </Box>
-  );
 
   useEffect(() => {
-    getAllProveedores().then((resp) => {
-      setStateProveedores(resp.data);
+    getAllMateriales().then((resp) => {
+      setStateMateriales(resp.data);
     });
   }, []);
   return (
     <div style={{ height: 800, width: "100%" }}>
       <DataGrid
         getRowId={(row) => row._id}
-        rows={stateProveedores}
+        rows={stateMateriales}
         columns={columns}
       />
-      <Modal open={modalEditar} onClose={abrirCerrarModalEditar}>
-        {bodyEditar}
-      </Modal>
     </div>
   );
 };

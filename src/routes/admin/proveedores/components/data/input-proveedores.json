@@ -2,8 +2,8 @@
   {
     "type": "input",
     "name": "nombre",
-    "placeholder": "Ingrese nombre del proveedor...",
-    "label": "Nombre Del Proveedor",
+    "placeholder": "Ingrese nombre del Material...",
+    "label": "Nombre Del Material",
     "value": "",
     "validations": [
       {
@@ -87,7 +87,7 @@
   {
     "type": "input",
     "name": "direccion",
-    "placeholder": "Ingrese la dirección del proveedor",
+    "placeholder": "Ingrese la dirección del Material",
     "label": "Dirección",
     "value": "",
     "validations": [
@@ -99,7 +99,7 @@
   {
     "type": "input",
     "name": "localidad",
-    "placeholder": "Ingrese la localidad del proveedor",
+    "placeholder": "Ingrese la localidad del Material",
     "label": "Localidad",
     "value": "",
     "validations": [

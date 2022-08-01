@@ -1,0 +1,50 @@
+[
+  {
+    "type": "input",
+    "name": "material",
+    "placeholder": "Ingrese nombre del material...",
+    "label": "Nombre Del Material",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }      
+    ]
+  },
+  {
+    "type": "input",
+    "name": "precio",
+    "placeholder": "Ingrese precio unitario...",
+    "label": "Precio unitario",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "rubro",
+    "placeholder": "Ingrese el rubro",
+    "label": "Rubro",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "stock",
+    "placeholder": "Ingrese el stock",
+    "label": "Stock",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  }
+]

@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
-import { FormProveedores } from "./components/FormProveedores";
-import { Listaproveedores } from "./components/ListaProveedores";
+import { Form } from "./components/Form";
+import { Lista } from "./components/Lista";
 
-const Proveedores = () => {
+const Materiales = () => {
   return (
     <Box
       sx={{
@@ -13,10 +13,10 @@ const Proveedores = () => {
         justifyContent: "space-between",
       }}
     >
-      <FormProveedores />
-      <Listaproveedores />
+      <Form />
+      <Lista />
     </Box>
   );
 };
 
-export default Proveedores;
+export default Materiales;

@@ -1,0 +1,68 @@
+[
+  {
+    "type": "input",
+    "name": "nombreapellido",
+    "placeholder": "Nombre y Apellido",
+    "label": "Nombre y Apellido",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "minLength",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "type": "email",
+    "name": "email",
+    "placeholder": "E-mail",
+    "label": "Email",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "password",
+    "name": "password",
+    "placeholder": "Password",
+    "label": "Password",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "rol",
+    "label": "Rol",
+    "value": "",
+    "options": [
+        {
+            "id": 0,
+            "label": "Seleccione"
+          },
+      {
+        "id": 1,
+        "label": "ADMIN"
+      },
+      {
+        "id": 2,
+        "label": "USER"
+      }
+      
+    ],
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  }
+]
