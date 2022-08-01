@@ -10,6 +10,7 @@ import Dashboard from "./admin/dashboard";
 import AdminLayout from "./admin/layout";
 import ListaPrecios from "./admin/listaPrecios";
 import Materiales from "./admin/materiales";
+import AdminNotFound from "./admin/NotFound";
 import Presupuesto from "./admin/presupuesto";
 import Productos from "./admin/productos";
 import Proveedores from "./admin/proveedores";
@@ -19,6 +20,7 @@ import Usuarios from "./admin/usuarios";
 import VentaRapida from "./admin/ventaRapida";
 import Home from "./home";
 import NotFound from "./NotFound";
+import LoginForm from "./admin/login";
 
 export default function AppRouter() {
   return (
@@ -26,7 +28,7 @@ export default function AppRouter() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<AuthProvider />}>
-          <Route path="login" element={<h1>Login</h1>} />
+          <Route path="login" element={<LoginForm />} />
           <Route element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="acopios" element={<Acopios />} />
@@ -44,6 +46,7 @@ export default function AppRouter() {
             <Route path="resultados" element={<Resultados />} />
             <Route path="usuarios" element={<Usuarios />} />
             <Route path="ventaRapida" element={<VentaRapida />} />
+            <Route path="*" element={<AdminNotFound />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />
