@@ -19,6 +19,7 @@ import Usuarios from "./admin/usuarios";
 import VentaRapida from "./admin/ventaRapida";
 import Home from "./home";
 import NotFound from "./NotFound";
+import LoginForm from "./admin/login";
 
 export default function AppRouter() {
   return (
@@ -26,7 +27,7 @@ export default function AppRouter() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<AuthProvider />}>
-          <Route path="login" element={<h1>Login</h1>} />
+          <Route path="login" element={<LoginForm />} />
           <Route element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="acopios" element={<Acopios />} />
