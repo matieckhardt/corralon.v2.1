@@ -34,10 +34,22 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import {
+  ReactNode,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useContext,
+} from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+
+import AuthContext from "contexts/AuthContext";
 
 const drawerWidth = 240;
 const Container = styled("div")({ display: "flex", minHeight: "100vh" });
@@ -181,6 +193,22 @@ export default function AdminLayout() {
     setThemeMode(themeMode === "dark" ? "light" : "dark");
   }, [themeMode]);
 
+  const navigate = useNavigate();
+  const { setToken } = useContext(AuthContext);
+  const [userAnchor, setUserAnchor] = useState<null | HTMLElement>(null);
+  const userOpen = Boolean(userAnchor);
+  const userClick = (e: MouseEvent<HTMLButtonElement>) => {
+    setUserAnchor(e.currentTarget);
+  };
+  const userClose = () => {
+    setUserAnchor(null);
+  };
+  const logout = () => {
+    setUserAnchor(null);
+    setToken(null);
+    navigate("/admin/login");
+  };
+
   const [drawerOpen, setDrawerOpen] = useState(false);
   const toggleDrawer = useCallback(() => {
     setDrawerOpen(!drawerOpen);
@@ -250,9 +278,12 @@ export default function AdminLayout() {
             >
               {themeMode === "dark" ? <Brightness7Icon /> : <Brightness3Icon />}
             </IconButton>
-            <IconButton color="inherit" edge="end">
+            <IconButton color="inherit" edge="end" onClick={userClick}>
               <AccountCircleIcon />
             </IconButton>
+            <Menu anchorEl={userAnchor} open={userOpen} onClose={userClose}>
+              <MenuItem onClick={logout}>Log Out</MenuItem>
+            </Menu>
           </Toolbar>
         </Navbar>
         <MobileDrawer
