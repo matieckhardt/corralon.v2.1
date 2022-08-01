@@ -1,7 +1,7 @@
 [
   {
     "type": "input",
-    "name": "nombreapellido",
+    "name": "nombre",
     "placeholder": "Nombre y Apellido",
     "label": "Nombre y Apellido",
     "value": "",
@@ -41,7 +41,7 @@
   },
   {
     "type": "select",
-    "name": "rol",
+    "name": "role",
     "label": "Rol",
     "value": "",
     "options": [

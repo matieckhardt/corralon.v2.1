@@ -12,6 +12,7 @@ export const Form = () => {
   const handleCreateUsuarios = (obj: any) =>{
     createUsuario(obj)
     .then((resp) => console.log(resp))
+    .catch((e ) => console.log(e))
   }
   return (
     <Card sx={{ minWidth: 275, width: "60%", marginRight: 10 }}>

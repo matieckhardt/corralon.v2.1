@@ -28,8 +28,8 @@ export const Lista = () => {
   const columns: GridColDef[] = [
     { field: "_id", hide: true },
     { field: "nombre", headerName: "Nombre", width: 130 },
-    { field: "user", headerName: "User name", width: 130 },
-    { field: "rol", headerName: "Rol", width: 130 },
+    { field: "email", headerName: "User name", width: 130 },
+    { field: "role", headerName: "Rol", width: 130 },
     {
       field: "editar",
       headerName: "Editar",

@@ -59,7 +59,7 @@ export const deleteMaterialDB = async(obj:any) => {
 ///USUARIOS
 export const getAllUsuarios = async() => {
   try {
-    return await axios.get(`${URL_BASE}/Usuarios/list`)
+    return await axios.get(`${URL_BASE}/users/list`)
   } catch (error) {
     throw new Error("Hubo un error al traer la lista de Usuarios");
     
@@ -67,14 +67,14 @@ export const getAllUsuarios = async() => {
 }
 export const createUsuario = async(obj: any)=>{
   try {
-    return await axios.post(`${URL_BASE}/Usuarios/create`,obj)
+    return await axios.post(`${URL_BASE}/users/create`,obj)
   } catch (error) {
     throw new Error("Hubo un error al crear el Usuarios");
   }
 }
 export const deleteUsuarioDB = async(obj:any) => {
   try {
-   return await axios.delete(`${URL_BASE}/Usuarios/delete/${obj._id}`)
+   return await axios.delete(`${URL_BASE}/users/delete/${obj._id}`)
   } catch (error) {
     throw new Error("Hubo un error al crear el Usuarios");
   }

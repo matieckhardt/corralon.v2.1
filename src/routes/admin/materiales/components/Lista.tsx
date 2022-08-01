@@ -27,7 +27,7 @@ export const Lista = () => {
   };
   const columns: GridColDef[] = [
     { field: "_id", hide: true },
-    { field: "material", headerName: "Material", width: 130 },
+    { field: "nombre", headerName: "Material", width: 130 },
     { field: "stock", headerName: "Stock", width: 130 },
     { field: "precio", headerName: "Precio", width: 130 },
     { field: "rubro", headerName: "Rubro", width: 130 },
