@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const URL_BASE =  "https://devops.corralonbianchi.com.ar/api";
-//const URL_BASE =  "http://localhost:4000/api";
+const URL_BASE = process.env.REACT_APP_API_URL;
 
 export const authLogin = async (obj?: any) => {
   try {
