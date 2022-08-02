@@ -6,6 +6,7 @@ interface AuthContextType {
   handleLogin: Function;
   stateProveedores: [];
   setProveedores: Function;
+
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
