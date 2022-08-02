@@ -5,9 +5,10 @@ import { CustomSelect } from "components/CustomSelect/CustomSelect";
 import "./styles.css"
 
 export const CustomForm = ({ data,initialValues,validationSchema, ...props }: any) => {
+  const datos = props?.dataEdit?.thisRow
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={ props?.dataEdit ? datos : initialValues}
       validationSchema={validationSchema}
       onSubmit={(values) => {
         props.enviar(values);
@@ -59,6 +60,9 @@ export const CustomForm = ({ data,initialValues,validationSchema, ...props }: an
               Cancelar
             </Button>
             <Button
+              onClick={() => setTimeout(() => {
+                handleReset()
+              }, 500)}
               variant="contained"
               type="submit"
               sx={{
