@@ -86,7 +86,7 @@
   },
   {
     "type": "input",
-    "name": "direccion",
+    "name": "address",
     "placeholder": "Ingrese la dirección del proveedor",
     "label": "Dirección",
     "value": "",
