@@ -3,8 +3,11 @@ import { Button } from "@mui/material";
 import { CustomInputText } from "components/CustomInputText/CustomInputText";
 import { CustomSelect } from "components/CustomSelect/CustomSelect";
 import "./styles.css"
+import { useContext } from "react";
+import AuthContext from "contexts/AuthContext";
 
 export const CustomForm = ({ data,initialValues,validationSchema, ...props }: any) => {
+  const {setProveedores} = useContext(AuthContext)
   const datos = props?.dataEdit?.thisRow
   return (
     <Formik
@@ -61,6 +64,7 @@ export const CustomForm = ({ data,initialValues,validationSchema, ...props }: an
             </Button>
             <Button
               onClick={() => setTimeout(() => {
+                setProveedores()
                 handleReset()
               }, 500)}
               variant="contained"

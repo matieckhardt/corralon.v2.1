@@ -82,7 +82,9 @@ export const Listaproveedores = () => {
           });
           let elemento = thisRow;
           deleteProveedorDB(elemento);
-          return thisRow;
+          (() => setTimeout(() => {
+            setProveedores()
+          },500))();
         };
 
         return (
@@ -107,7 +109,7 @@ export const Listaproveedores = () => {
 
   useEffect(() => {
     setProveedores()
-  }, [setProveedores]);
+  }, []);
   return (
     <div style={{ height: 800, width: "100%" }}>
       <DataGrid
