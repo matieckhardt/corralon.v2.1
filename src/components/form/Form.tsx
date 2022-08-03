@@ -30,6 +30,7 @@ export default function Form<T>({
           return cloneElement(child, {
             register,
             getFieldState,
+            key: child.props.name,
           });
         } else {
           return child;
