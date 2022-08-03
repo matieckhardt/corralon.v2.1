@@ -1,5 +1,4 @@
-
-import { getAllProductos } from "apis/productos";
+import { createProduct, getAllProductos } from "apis/productos";
 import { authLogin, getAllProveedores } from "apis/proveedores";
 import { addTokenCredential, getTokenCredencial } from "helpers";
 import { useEffect, useState } from "react";
@@ -17,11 +16,11 @@ export default function AuthProvider() {
     getAllProveedores().then((resp) => {
       setStateProveedores(resp.data);
     });
-  }
+  };
 
   const setProductos = () => {
-    getAllProductos().then((resp) => setStateProductos(resp.data))
-  }
+    getAllProductos().then((resp) => setStateProductos(resp.data));
+  };
 
   const handleLogin = (obj: any) => {
     authLogin(obj).then((resp) => {
@@ -35,6 +34,10 @@ export default function AuthProvider() {
     });
   };
 
+  const handleCreateProduct = (obj: any) => {
+    createProduct(obj).then((resp) => console.log(resp));
+  };
+
   useEffect(() => {
     setProductos();
     if (token) {
@@ -45,7 +48,17 @@ export default function AuthProvider() {
   }, [token]);
 
   return (
-    <AuthContext.Provider value={{ token, setToken, handleLogin, stateProveedores, setProveedores, stateProductos }}>
+    <AuthContext.Provider
+      value={{
+        token,
+        stateProveedores,
+        stateProductos,
+        setToken,
+        handleLogin,
+        setProveedores,
+        handleCreateProduct,
+      }}
+    >
       <Outlet />
     </AuthContext.Provider>
   );

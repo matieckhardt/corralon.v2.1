@@ -8,11 +8,12 @@ import {
 } from "./validations/validationsSchema";
 import { CustomInputText, CustomSelect } from "components";
 import mock from "./data/mock-proveedores.json";
+import { useContext } from "react";
+import AuthContext from "contexts/AuthContext";
 
 export const FormProductos = () => {
-  const createProducto= (obj:any) => {
-    console.log(obj)
-  }
+  const {handleCreateProduct} = useContext(AuthContext)
+ 
   return (
     <Card sx={{ margin: 2 }}>
       <CardHeader
@@ -21,7 +22,7 @@ export const FormProductos = () => {
       />
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => createProducto(values)}
+        onSubmit={(values) => handleCreateProduct(values)}
         validationSchema={validationSchema}
       >
         {({handleReset}) => (
@@ -40,7 +41,7 @@ export const FormProductos = () => {
 
               <FormControl sx={{ width: "60%" }}>
                 <CustomInputText
-                  name="producto"
+                  name="nombre"
                   label="Nombre del Producto"
                   placeholder="Seleccione un producto"
                 />

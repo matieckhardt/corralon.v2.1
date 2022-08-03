@@ -4,6 +4,7 @@ interface AuthContextType {
   token: string | null;
   setToken(value: string | null): void;
   handleLogin: Function;
+  handleCreateProduct: Function;
   stateProveedores: [];
   stateProductos: [];
   setProveedores: Function;
