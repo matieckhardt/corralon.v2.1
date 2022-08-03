@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
-import { Button, Modal } from "@mui/material";
+import { Button, Card, CardHeader, Modal } from "@mui/material";
 import formJson from "./data/input-proveedores.json";
 import { Box } from "@mui/system";
 import { CustomForm } from "components/CustomForm/CustomForm";
-import { deleteProveedorDB, updateProveedorer } from "apis";
+import { deleteProveedorDB, updateProveedorer } from "apis/proveedores";
 import AuthContext from "contexts/AuthContext";
 
 const styles = {
@@ -32,11 +32,11 @@ export const Listaproveedores = () => {
     { field: "nombre", headerName: "Nombre del Proveedor", width: 130 },
     { field: "razonSocial", headerName: "Razon Social", width: 130 },
     { field: "fiscal", headerName: "Condicion Fiscal", width: 130 },
-    { field: "localidad", headerName: "Localidad", width: 130 },
+    { field: "localidad", headerName: "Localidad", width: 90 },
     { field: "tel", headerName: "telefono", width: 130 },
     { field: "cuit", headerName: "cuit", width: 130 },
-    { field: "tipo", headerName: "tipo", width: 130 },
-    { field: "contacto", headerName: "Contacto", width: 130 },
+    { field: "tipo", headerName: "tipo", width: 80 },
+    { field: "contacto", headerName: "Contacto", width: 100 },
     {
       field: "editar",
       headerName: "Editar",
@@ -111,6 +111,11 @@ export const Listaproveedores = () => {
     setProveedores()
   }, []);
   return (
+    <Card sx={{ margin: 2 }}>
+    <CardHeader
+      sx={{ backgroundColor: "green", color: "white" }}
+      title="Lista de Proveedores"
+    />
     <div style={{ height: 800, width: "100%" }}>
       <DataGrid
         getRowId={(row) => row._id}
@@ -121,5 +126,6 @@ export const Listaproveedores = () => {
         {bodyEditar}
       </Modal>
     </div>
+    </Card>
   );
 };

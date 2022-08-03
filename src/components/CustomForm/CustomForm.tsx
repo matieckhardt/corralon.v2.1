@@ -5,6 +5,7 @@ import { CustomSelect } from "components/CustomSelect/CustomSelect";
 import "./styles.css"
 import { useContext } from "react";
 import AuthContext from "contexts/AuthContext";
+import { Box } from "@mui/system";
 
 export const CustomForm = ({ data,initialValues,validationSchema, ...props }: any) => {
   const {setProveedores} = useContext(AuthContext)
@@ -18,7 +19,8 @@ export const CustomForm = ({ data,initialValues,validationSchema, ...props }: an
       }}
     >
       {({ handleReset }) => (
-        <Form className="form">
+        <Box sx={{ display:'flex', width: '100%', padding: 2,}}>
+        <Form style={{width: "100%"}}>
           {data.map(({ type, name, placeholder, label, options }: any) => {
             if (type === "input" || type === "password" || type === "email") {
               return (
@@ -81,6 +83,7 @@ export const CustomForm = ({ data,initialValues,validationSchema, ...props }: an
             </Button>
           </div>
         </Form>
+        </Box>
       )}
     </Formik>
   );
