@@ -1,0 +1,67 @@
+[
+  {
+    "type": "input",
+    "name": "nombre",
+    "placeholder": "Ingrese nombre del cliente...",
+    "label": "Nombre del Cliente",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "minLength",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "email",
+    "placeholder": "Ingrese la mail...",
+    "label": "email",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "password",
+    "placeholder": "password",
+    "label": "password",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "rol",
+    "label": "rol",
+    "value": "",
+    "options": [
+        {
+            "id": 0,
+            "label": "Seleccione"
+          },
+      {
+        "id": 1,
+        "label": "ADMIN"
+      },
+      {
+        "id": 2,
+        "label": "USER"
+      }
+    ],
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  }
+    ]

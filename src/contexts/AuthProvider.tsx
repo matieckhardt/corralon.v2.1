@@ -1,6 +1,7 @@
 import { authLogin, getAllProveedores } from "apis/proveedores";
 import { createProduct, getAllProductos } from "apis/productos";
 import { getAllClientes } from "apis/clientes";
+import { getAllUsuarios } from "apis/usuarios";
 import { getAllRubros } from "apis/rubros";
 import { addTokenCredential, getTokenCredencial } from "helpers";
 import { useEffect, useState } from "react";
@@ -13,6 +14,7 @@ export default function AuthProvider() {
   const [stateProveedores, setStateProveedores] = useState<any>([]);
   const [stateProductos, setStateProductos] = useState<any>([]);
   const [stateClientes, setStateClientes] = useState<any>([]);
+  const [stateUsuarios, setStateUsuarios] = useState<any>([]);
   const [token, setToken] = useState<string | null>(getTokenCredencial());
 
   const setProveedores = () => {
@@ -26,6 +28,9 @@ export default function AuthProvider() {
   };
   const setClientes = () => {
     getAllClientes().then((resp) => setStateClientes(resp.data));
+  };
+  const setUsuarios = () => {
+    getAllUsuarios().then((resp) => setStateUsuarios(resp.data));
   };
   const [stateRubros, setStateRubros] = useState<any>([]);
 
@@ -65,8 +70,10 @@ export default function AuthProvider() {
         token,
         stateClientes,
         setClientes,
+        setUsuarios,
         stateProveedores,
         stateProductos,
+        stateUsuarios,
         stateRubros,
         setToken,
         handleLogin,
