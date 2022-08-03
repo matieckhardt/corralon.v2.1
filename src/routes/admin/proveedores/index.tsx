@@ -1,20 +1,12 @@
 import { Box } from "@mui/material";
-import { Form } from "./components/Form";
-import { Lista } from "./components/Lista";
+import { FormProveedores } from "./components/FormProveedores";
+import { Listaproveedores } from "./components/Listaproveedores";
 
 const Materiales = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        width: "90%",
-        margin: "auto",
-        marginTop:5,
-        justifyContent: "space-between",
-      }}
-    >
-      <Form />
-      <Lista />
+    <Box>
+      <FormProveedores />
+      <Listaproveedores />
     </Box>
   );
 };

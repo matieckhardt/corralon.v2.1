@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
-import { Button, Modal } from "@mui/material";
-import formJson from "./data/input-proveedores.json";
+import { Button, Card, CardHeader, Modal } from "@mui/material";
+import formJson from "./data/input-clientes.json";
 import { Box } from "@mui/system";
 import { CustomForm } from "components/CustomForm/CustomForm";
-import { deleteProveedorDB, getAllProveedores } from "apis";
+import { deleteClienteDB, updateCliente } from "apis/clientes";
+import AuthContext from "contexts/AuthContext";
 
 const styles = {
   modal: {
@@ -19,26 +20,28 @@ const styles = {
     transform: "translate(-50%, -50%)",
   },
 };
-export const Lista = () => {
-  const [stateProveedores, setStateProveedores] = useState<any>([]);
+export const ListaClientes = () => {
+  const { stateClientes, setClientes } = useContext(AuthContext);
+  const [dataEdit, setDataEdit] = useState({});
   const [modalEditar, setModalEditar] = useState(false);
   const abrirCerrarModalEditar = () => {
     setModalEditar(!modalEditar);
   };
   const columns: GridColDef[] = [
     { field: "_id", hide: true },
-    { field: "nombre", headerName: "Nombre del Proveedor", width: 130 },
+    { field: "nombre", headerName: "Nombre del Cliente", width: 130 },
     { field: "razonSocial", headerName: "Razon Social", width: 130 },
-    { field: "localidad", headerName: "Localidad", width: 130 },
+    { field: "fiscal", headerName: "Condicion Fiscal", width: 130 },
+    { field: "localidad", headerName: "Localidad", width: 90 },
     { field: "tel", headerName: "telefono", width: 130 },
-    { field: "cuit", headerName: "cuit", width: 130 },
-    { field: "tipo", headerName: "tipo", width: 130 },
+    { field: "dni", headerName: "dni/cuit", width: 130 },
+    { field: "observaciones", headerName: "observaciones", width: 100 },
     {
       field: "editar",
       headerName: "Editar",
       sortable: false,
       renderCell: (params) => {
-        const editProveedor = () => {
+        const editCliente = () => {
           const api: GridApi = params.api;
           const fields = api
             .getAllColumns()
@@ -49,11 +52,12 @@ export const Lista = () => {
             thisRow[f] = params.getValue(params.id, f);
           });
           abrirCerrarModalEditar();
+          setDataEdit({ thisRow });
         };
         return (
           <Button
-            sx={{ backgroundColor: "green", color: "white", fontSize:14}}
-            onClick={editProveedor}
+            sx={{ backgroundColor: "#1976d2", color: "white", fontSize: 14 }}
+            onClick={editCliente}
           >
             Editar
           </Button>
@@ -65,7 +69,7 @@ export const Lista = () => {
       headerName: "Elimnar",
       sortable: false,
       renderCell: (params) => {
-        const deleteProveedor = () => {
+        const deleteCliente = () => {
           const api: GridApi = params.api;
           const fields = api
             .getAllColumns()
@@ -76,14 +80,17 @@ export const Lista = () => {
             thisRow[f] = params.getValue(params.id, f);
           });
           let elemento = thisRow;
-          deleteProveedorDB(elemento);
-          return console.log(thisRow);
+          deleteClienteDB(elemento);
+          (() =>
+            setTimeout(() => {
+              setClientes();
+            }, 500))();
         };
 
         return (
           <Button
-            sx={{ backgroundColor: "#f53535", color: "white", fontSize:14 }}
-            onClick={deleteProveedor}
+            sx={{ backgroundColor: "#f53535", color: "white", fontSize: 14 }}
+            onClick={deleteCliente}
           >
             Eliminar
           </Button>
@@ -95,25 +102,34 @@ export const Lista = () => {
   const bodyEditar = (
     <Box sx={styles.modal}>
       <h3>Editar Proveedor</h3>
-      <CustomForm data={formJson} cerrar={abrirCerrarModalEditar}/>
+      <CustomForm
+        data={formJson}
+        cerrar={abrirCerrarModalEditar}
+        dataEdit={dataEdit}
+        enviar={updateCliente}
+      />
     </Box>
   );
 
   useEffect(() => {
-    getAllProveedores().then((resp) => {
-      setStateProveedores(resp.data);
-    });
+    setClientes();
   }, []);
   return (
-    <div style={{ height: 800, width: "100%" }}>
-      <DataGrid
-        getRowId={(row) => row._id}
-        rows={stateProveedores}
-        columns={columns}
+    <Card sx={{ margin: 2 }}>
+      <CardHeader
+        sx={{ backgroundColor: "#1976d2", color: "white" }}
+        title="Lista de Proveedores"
       />
-      <Modal open={modalEditar} onClose={abrirCerrarModalEditar}>
-        {bodyEditar}
-      </Modal>
-    </div>
+      <div style={{ height: 800, width: "100%" }}>
+        <DataGrid
+          getRowId={(row) => row._id}
+          rows={stateClientes}
+          columns={columns}
+        />
+        <Modal open={modalEditar} onClose={abrirCerrarModalEditar}>
+          {bodyEditar}
+        </Modal>
+      </div>
+    </Card>
   );
 };

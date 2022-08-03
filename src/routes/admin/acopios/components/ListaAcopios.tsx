@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
 import { Button, Modal } from "@mui/material";
-import {  getAllAcopios } from "apis";
+import {  getAllAcopios } from "apis/acopios";
 
 const styles = {
   modal: {

@@ -2,8 +2,8 @@
   {
     "type": "input",
     "name": "nombre",
-    "placeholder": "Ingrese nombre del Material...",
-    "label": "Nombre Del Material",
+    "placeholder": "Ingrese nombre del cliente...",
+    "label": "Nombre del Cliente",
     "value": "",
     "validations": [
       {
@@ -28,9 +28,21 @@
     ]
   },
   {
+    "type": "input",
+    "name": "dni",
+    "placeholder": "N° DNI / CUIT",
+    "label": "N° DNI / CUIT(Sin Guiones)",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
     "type": "select",
-    "name": "tipo",
-    "label": "Tipo",
+    "name": "fiscal",
+    "label": "Condicion Fiscal",
     "value": "",
     "options": [
         {
@@ -39,15 +51,15 @@
           },
       {
         "id": 1,
-        "label": "Productivo"
+        "label": "Consumidor Final"
       },
       {
         "id": 2,
-        "label": "No Productivo"
+        "label": "Responsable Inscripto"
       },
       {
         "id": 3,
-        "label": "Inpuesto"
+        "label": "Exento"
       },
       {
         "id": 4,
@@ -62,32 +74,8 @@
   },
   {
     "type": "input",
-    "name": "cuit",
-    "placeholder": "N° CUIT",
-    "label": "N° CUIT(Sin Guiones)",
-    "value": "",
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
-  },
-  {
-    "type": "input",
-    "name": "fiscal",
-    "placeholder": "Responsable Incripto",
-    "label": "Condición Fiscal",
-    "value": "",
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
-  },
-  {
-    "type": "input",
     "name": "address",
-    "placeholder": "Ingrese la dirección del proveedor",
+    "placeholder": "Ingrese la dirección del cliente",
     "label": "Dirección",
     "value": "",
     "validations": [
@@ -99,7 +87,7 @@
   {
     "type": "input",
     "name": "localidad",
-    "placeholder": "Ingrese la localidad del Material",
+    "placeholder": "Ingrese la localidad del proveedor",
     "label": "Localidad",
     "value": "",
     "validations": [
@@ -122,9 +110,9 @@
   },
   {
     "type": "input",
-    "name": "contacto",
-    "placeholder": "Ingrese el contacto",
-    "label": "Contacto",
+    "name": "observaciones",
+    "placeholder": "Ingrese una observacion",
+    "label": "Observaciones",
     "value": "",
     "validations": [
       {

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import { Form } from "./components/Form";
-import { Lista } from "./components/Lista";
+import { FormUsuarios } from "./components/FormUsuarios";
+import { ListaUsuarios } from "./components/ListaUsuarios";
 
 const Usuarios = () => {
   return (
@@ -13,8 +13,8 @@ const Usuarios = () => {
         justifyContent: "space-between",
       }}
     >
-      <Form />
-      <Lista />
+      <FormUsuarios />
+      <ListaUsuarios />
     </Box>
   );
 };

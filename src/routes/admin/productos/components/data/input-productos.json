@@ -1,0 +1,99 @@
+
+[
+    {
+      "type": "select",
+      "name": "proveedor",
+      "placeholder": "Ingrese nombre del proveedor...",
+      "label": "Seleccione El Proveedor",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "input",
+      "name": "nombre",
+      "placeholder": "Ingrese El Producto",
+      "label": "Nombre del Producto",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "input",
+      "name": "marca",
+      "placeholder": "Ingrese una marca...",
+      "label": "Marca",
+      "value": "",
+      "validations":[
+        {
+          "type":"required"
+        }
+      ]
+      
+    },
+    {
+      "type": "input",
+      "name": "precio",
+      "placeholder": "Ingrese Precio",
+      "label": "Precio",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "iva",
+      "placeholder": "Ingrese Porcentaje",
+      "label": "IVA",
+      "value": "",
+      "options": [
+        {
+            "id": 0,
+            "label": "0%"
+          },
+      {
+        "id": 1,
+        "label": "10.5%"
+      },
+      {
+        "id": 2,
+        "label": "21%"
+      },
+      {
+        "id": 3,
+        "label": "27%"
+      },
+      {
+        "id": 4,
+        "label": "30%"
+      }
+    ],
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "input",
+      "name": "rubro",
+      "placeholder": "Ingrese el Rubro",
+      "label": "Rubro",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    }
+  ]
+  

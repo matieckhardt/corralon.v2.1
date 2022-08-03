@@ -6,23 +6,21 @@ import {
 import formJson from "./data/input-usuarios.json";
 import { CardHeader } from "@mui/material";
 import { CustomForm } from "components/CustomForm/CustomForm";
-import { createUsuario } from "apis";
+import { createUsuario } from "apis/usuarios";
 
-export const Form = () => {
-  const handleCreateUsuarios = (obj: any) =>{
-    createUsuario(obj)
-    .then((resp) => console.log(resp))
-    .catch((e ) => console.log(e))
-  }
+export const FormUsuarios = () => {
+  const handleCreateUsuario = (obj: any) => {
+    createUsuario(obj).then((resp) => console.log(resp));
+  };
   return (
-    <Card sx={{ minWidth: 275, width: "60%", marginRight: 10 }}>
+    <Card sx={{ width: "97%", margin: "auto" }}>
       <CardHeader
-        sx={{ backgroundColor: "green", color: "white" }}
-        title="Alta de Usuarioses"
+        sx={{ backgroundColor: "#1976d2", color: "white" }}
+        title="Alta de Usuarios"
       />
       <CustomForm
         data={formJson}
-        enviar={handleCreateUsuarios}
+        enviar={handleCreateUsuario}
         validationSchema={validationSchema}
         initialValues={initialValues}
       />

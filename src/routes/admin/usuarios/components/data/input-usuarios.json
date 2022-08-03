@@ -2,8 +2,8 @@
   {
     "type": "input",
     "name": "nombre",
-    "placeholder": "Nombre y Apellido",
-    "label": "Nombre y Apellido",
+    "placeholder": "Ingrese nombre del cliente...",
+    "label": "Nombre del Cliente",
     "value": "",
     "validations": [
       {
@@ -18,8 +18,8 @@
   {
     "type": "email",
     "name": "email",
-    "placeholder": "E-mail",
-    "label": "Email",
+    "placeholder": "Ingrese la mail...",
+    "label": "email",
     "value": "",
     "validations": [
       {
@@ -30,8 +30,8 @@
   {
     "type": "password",
     "name": "password",
-    "placeholder": "Password",
-    "label": "Password",
+    "placeholder": "password",
+    "label": "password",
     "value": "",
     "validations": [
       {
@@ -41,8 +41,8 @@
   },
   {
     "type": "select",
-    "name": "role",
-    "label": "Rol",
+    "name": "rol",
+    "label": "rol",
     "value": "",
     "options": [
         {
@@ -57,7 +57,6 @@
         "id": 2,
         "label": "USER"
       }
-      
     ],
     "validations": [
       {
@@ -65,4 +64,4 @@
       }
     ]
   }
-]
+    ]

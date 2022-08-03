@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
 import { Button, Modal } from "@mui/material";
-import {  getAllMateriales } from "apis";
+import {  getAllAcopios } from "apis/acopios";
 
 const styles = {
   modal: {
@@ -31,7 +31,7 @@ export const ListaStock = () => {
 
 
   useEffect(() => {
-    getAllMateriales().then((resp) => {
+    getAllAcopios().then((resp) => {
       setStateMateriales(resp.data);
     });
   }, []);

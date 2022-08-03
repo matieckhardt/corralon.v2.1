@@ -3,25 +3,25 @@ import {
   initialValues,
   validationSchema,
 } from "../validations/validationsSchema";
-import formJson from "./data/input-materiales.json";
+import formJson from "./data/input-proveedores.json";
 import { CardHeader } from "@mui/material";
 import { CustomForm } from "components/CustomForm/CustomForm";
-import { createMaterial } from "apis";
+import { createProveedor } from "apis/proveedores";
 
-export const Form = () => {
-  const handleCreateMaterial = (obj: any) =>{
-    createMaterial(obj)
+export const FormProveedores = () => {
+  const handleCreateProveedor = (obj: any) =>{
+    createProveedor(obj)
     .then((resp) => console.log(resp))
   }
   return (
-    <Card sx={{ minWidth: 275, width: "60%", marginRight: 10 }}>
+    <Card sx={{ width: "97%", margin:'auto'}}>
       <CardHeader
-        sx={{ backgroundColor: "yellow", color: "white" }}
-        title="Alta de Materiales"
+        sx={{ backgroundColor: "green", color: "white" }}
+        title="Alta de Proveedores"
       />
       <CustomForm
         data={formJson}
-        enviar={handleCreateMaterial}
+        enviar={handleCreateProveedor}
         validationSchema={validationSchema}
         initialValues={initialValues}
       />
