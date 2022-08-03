@@ -11,6 +11,8 @@ interface AuthContextType {
   setProveedores: Function;
   stateClientes: [];
   setClientes: Function;
+  setMateriales: Function;
+  stateMateriales: [];
   stateUsuarios: [];
   setUsuarios: Function;
 
