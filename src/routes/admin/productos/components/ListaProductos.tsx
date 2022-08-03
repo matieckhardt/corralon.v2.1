@@ -7,8 +7,8 @@ export const ListaProductos = () => {
   const {stateProductos} = useContext(AuthContext);
  
   const columns: GridColDef[] = [
-    { field: "nombre", headerName: "Nombre", width: 250 },
     { field: "proveedor", headerName: "Proveedor", width: 170 },
+    { field: "nombre", headerName: "Nombre", width: 250 },
     { field: "marca", headerName: "Marca", width: 170 },
     { field: "precio", headerName: "Precio", width: 130 },
     { field: "iva", headerName: "IVA", width: 130 },

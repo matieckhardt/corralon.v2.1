@@ -14,7 +14,7 @@
     },
     {
       "type": "input",
-      "name": "producto",
+      "name": "nombre",
       "placeholder": "Ingrese El Producto",
       "label": "Nombre del Producto",
       "value": "",

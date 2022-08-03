@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
 import { Button, Card, CardHeader, Modal } from "@mui/material";
 import formJson from "./data/input-proveedores.json";
@@ -106,10 +106,6 @@ export const Listaproveedores = () => {
     </Box>
   );
 
-
-  useEffect(() => {
-    setProveedores()
-  }, []);
   return (
     <Card sx={{ margin: 2 }}>
     <CardHeader
