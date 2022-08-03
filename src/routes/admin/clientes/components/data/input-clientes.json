@@ -1,0 +1,123 @@
+[
+  {
+    "type": "input",
+    "name": "nombre",
+    "placeholder": "Ingrese nombre del cliente...",
+    "label": "Nombre del Cliente",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "minLength",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "razonSocial",
+    "placeholder": "Ingrese la razón social...",
+    "label": "Razón Social",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "dni",
+    "placeholder": "N° DNI / CUIT",
+    "label": "N° DNI / CUIT(Sin Guiones)",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "fiscal",
+    "label": "Condicion Fiscal",
+    "value": "",
+    "options": [
+        {
+            "id": 0,
+            "label": "Seleccione"
+          },
+      {
+        "id": 1,
+        "label": "Consumidor Final"
+      },
+      {
+        "id": 2,
+        "label": "Responsable Inscripto"
+      },
+      {
+        "id": 3,
+        "label": "Exento"
+      },
+      {
+        "id": 4,
+        "label": "Otro"
+      }
+    ],
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "address",
+    "placeholder": "Ingrese la dirección del cliente",
+    "label": "Dirección",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "localidad",
+    "placeholder": "Ingrese la localidad del proveedor",
+    "label": "Localidad",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "tel",
+    "placeholder": "N° de teléfono",
+    "label": "Teléfono (Sin Guiones)",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "observaciones",
+    "placeholder": "Ingrese una observacion",
+    "label": "Observaciones",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  }
+]

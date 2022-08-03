@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
 import { Button, Card, CardHeader, Modal } from "@mui/material";
-import formJson from "./data/input-proveedores.json";
+import formJson from "./data/input-materiales.json";
 import { Box } from "@mui/system";
 import { CustomForm } from "components/CustomForm/CustomForm";
-import { deleteProveedorDB, updateProveedorer } from "apis/proveedores";
+import { deleteMaterialDB, updateMaterial } from "apis/materiales";
 import AuthContext from "contexts/AuthContext";
 
 const styles = {
@@ -20,8 +20,8 @@ const styles = {
     transform: "translate(-50%, -50%)",
   },
 };
-export const Listaproveedores = () => {
-  const {stateProveedores, setProveedores} = useContext(AuthContext);
+export const ListaMateriales = () => {
+  const { stateMateriales, setMateriales } = useContext(AuthContext);
   const [dataEdit, setDataEdit] = useState({});
   const [modalEditar, setModalEditar] = useState(false);
   const abrirCerrarModalEditar = () => {
@@ -29,20 +29,16 @@ export const Listaproveedores = () => {
   };
   const columns: GridColDef[] = [
     { field: "_id", hide: true },
-    { field: "nombre", headerName: "Nombre del Proveedor", width: 130 },
-    { field: "razonSocial", headerName: "Razon Social", width: 130 },
-    { field: "fiscal", headerName: "Condicion Fiscal", width: 130 },
-    { field: "localidad", headerName: "Localidad", width: 90 },
-    { field: "tel", headerName: "telefono", width: 130 },
-    { field: "cuit", headerName: "cuit", width: 130 },
-    { field: "tipo", headerName: "tipo", width: 80 },
-    { field: "contacto", headerName: "Contacto", width: 100 },
+    { field: "nombre", headerName: "Nombre del Material", width: 130 },
+    { field: "precio", headerName: "Precio", width: 130 },
+    { field: "rubro", headerName: "Rubro", width: 130 },
+    { field: "stock", headerName: "Stock", width: 90 },
     {
       field: "editar",
       headerName: "Editar",
       sortable: false,
       renderCell: (params) => {
-        const editProveedor = () => {
+        const editMaterial = () => {
           const api: GridApi = params.api;
           const fields = api
             .getAllColumns()
@@ -53,12 +49,12 @@ export const Listaproveedores = () => {
             thisRow[f] = params.getValue(params.id, f);
           });
           abrirCerrarModalEditar();
-          setDataEdit({thisRow})
+          setDataEdit({ thisRow });
         };
         return (
           <Button
-            sx={{ backgroundColor: "green", color: "white", fontSize:14}}
-            onClick={editProveedor}
+            sx={{ backgroundColor: "green", color: "white", fontSize: 14 }}
+            onClick={editMaterial}
           >
             Editar
           </Button>
@@ -70,7 +66,7 @@ export const Listaproveedores = () => {
       headerName: "Elimnar",
       sortable: false,
       renderCell: (params) => {
-        const deleteProveedor = () => {
+        const deleteMaterial = () => {
           const api: GridApi = params.api;
           const fields = api
             .getAllColumns()
@@ -81,16 +77,17 @@ export const Listaproveedores = () => {
             thisRow[f] = params.getValue(params.id, f);
           });
           let elemento = thisRow;
-          deleteProveedorDB(elemento);
-          (() => setTimeout(() => {
-            setProveedores()
-          },500))();
+          deleteMaterialDB(elemento);
+          (() =>
+            setTimeout(() => {
+              setMateriales();
+            }, 500))();
         };
 
         return (
           <Button
-            sx={{ backgroundColor: "#f53535", color: "white", fontSize:14 }}
-            onClick={deleteProveedor}
+            sx={{ backgroundColor: "#f53535", color: "white", fontSize: 14 }}
+            onClick={deleteMaterial}
           >
             Eliminar
           </Button>
@@ -101,27 +98,32 @@ export const Listaproveedores = () => {
 
   const bodyEditar = (
     <Box sx={styles.modal}>
-      <h3>Editar Proveedor</h3>
-      <CustomForm data={formJson} cerrar={abrirCerrarModalEditar} dataEdit={dataEdit} enviar={updateProveedorer} />
+      <h3>Editar Material</h3>
+      <CustomForm
+        data={formJson}
+        cerrar={abrirCerrarModalEditar}
+        dataEdit={dataEdit}
+        enviar={updateMaterial}
+      />
     </Box>
   );
 
   return (
     <Card sx={{ margin: 2 }}>
-    <CardHeader
-      sx={{ backgroundColor: "green", color: "white" }}
-      title="Lista de Proveedores"
-    />
-    <div style={{ height: 800, width: "100%" }}>
-      <DataGrid
-        getRowId={(row) => row._id}
-        rows={stateProveedores}
-        columns={columns}
+      <CardHeader
+        sx={{ backgroundColor: "green", color: "white" }}
+        title="Lista de Materiales"
       />
-      <Modal open={modalEditar} onClose={abrirCerrarModalEditar}>
-        {bodyEditar}
-      </Modal>
-    </div>
+      <div style={{ height: 800, width: "100%" }}>
+        <DataGrid
+          getRowId={(row) => row._id}
+          rows={stateMateriales}
+          columns={columns}
+        />
+        <Modal open={modalEditar} onClose={abrirCerrarModalEditar}>
+          {bodyEditar}
+        </Modal>
+      </div>
     </Card>
   );
 };

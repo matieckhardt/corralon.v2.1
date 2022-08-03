@@ -7,12 +7,11 @@ import {
   validationSchema,
 } from "./validations/validationsSchema";
 import { CustomInputText, CustomSelect } from "components";
-import mock from "./data/mock-proveedores.json";
+import { useContext } from "react";
+import AuthContext from "contexts/AuthContext";
 
 export const FormProductos = () => {
-  const createProducto= (obj:any) => {
-    console.log(obj)
-  }
+  const {handleCreateProduct,stateProveedores, stateRubros} = useContext(AuthContext)
   return (
     <Card sx={{ margin: 2 }}>
       <CardHeader
@@ -21,7 +20,7 @@ export const FormProductos = () => {
       />
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => createProducto(values)}
+        onSubmit={(values) => handleCreateProduct(values)}
         validationSchema={validationSchema}
       >
         {({handleReset}) => (
@@ -30,9 +29,9 @@ export const FormProductos = () => {
               <FormControl sx={{ width: "60%" }}>
                 <CustomSelect label="Seleccione El Proveedor" name="proveedor">
                   <option value="">Seleccione un proveedor</option>
-                  {mock.map(({ id, name }) => (
-                    <option key={id} value={name}>
-                      {name}
+                  {stateProveedores?.map(({ _id, nombre }) => (
+                    <option key={_id} value={nombre}>
+                      {nombre}
                     </option>
                   ))}
                 </CustomSelect>
@@ -40,7 +39,7 @@ export const FormProductos = () => {
 
               <FormControl sx={{ width: "60%" }}>
                 <CustomInputText
-                  name="producto"
+                  name="nombre"
                   label="Nombre del Producto"
                   placeholder="Seleccione un producto"
                 />
@@ -67,9 +66,9 @@ export const FormProductos = () => {
               <FormControl sx={{ width: "60%" }}>
                 <CustomSelect label="Rubro" name="rubro">
                   <option value="">Seleccione un rubro</option>
-                  {mock.map(({ id, name }) => (
-                    <option key={id} value={name}>
-                      {name}
+                  {stateRubros?.map(({ _id, nombre }) => (
+                    <option key={_id} value={nombre}>
+                      {nombre}
                     </option>
                   ))}
                 </CustomSelect>

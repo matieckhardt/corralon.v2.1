@@ -1,0 +1,75 @@
+[
+  {
+    "type": "input",
+    "name": "nombre",
+    "placeholder": "Ingrese nombre del material...",
+    "label": "Nombre Del Material",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "minLength",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "precio",
+    "placeholder": "Ingrese la precio...",
+    "label": "precio",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "rubro",
+    "label": "rubro",
+    "value": "",
+    "options": [
+        {
+            "id": 0,
+            "label": "Seleccione"
+          },
+      {
+        "id": 1,
+        "label": "Hidrofugo"
+      },
+      {
+        "id": 2,
+        "label": "Cemento"
+      },
+      {
+        "id": 3,
+        "label": "Arena"
+      },
+      {
+        "id": 4,
+        "label": "Otro"
+      }
+    ],
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "stock",
+    "placeholder": "stock",
+    "label": "stock",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  }
+]
