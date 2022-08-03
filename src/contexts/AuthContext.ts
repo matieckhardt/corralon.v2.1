@@ -7,6 +7,7 @@ interface AuthContextType {
   handleCreateProduct: Function;
   stateProveedores: [];
   stateProductos: [];
+  stateRubros: [];
   setProveedores: Function;
 
 }
