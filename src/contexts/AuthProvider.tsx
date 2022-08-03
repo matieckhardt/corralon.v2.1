@@ -1,5 +1,6 @@
-import { createProduct, getAllProductos } from "apis/productos";
 import { authLogin, getAllProveedores } from "apis/proveedores";
+import { createProduct, getAllProductos } from "apis/productos";
+import { getAllClientes } from "apis/clientes";
 import { getAllRubros } from "apis/rubros";
 import { addTokenCredential, getTokenCredencial } from "helpers";
 import { useEffect, useState } from "react";
@@ -11,14 +12,25 @@ export default function AuthProvider() {
   const navigate = useNavigate();
   const [stateProveedores, setStateProveedores] = useState<any>([]);
   const [stateProductos, setStateProductos] = useState<any>([]);
-  const [stateRubros, setStateRubros] = useState<any>([]);
+  const [stateClientes, setStateClientes] = useState<any>([]);
   const [token, setToken] = useState<string | null>(getTokenCredencial());
 
-  const setProveedores = () => getAllProveedores().then(({data}) => setStateProveedores(data));
+  const setProveedores = () => {
+    getAllProveedores().then((resp) => {
+      setStateProveedores(resp.data);
+    });
+  };
 
-  const setProductos = () => getAllProductos().then(({data}) => setStateProductos(data));
-  const setRubros = () => getAllRubros().then(({data}) => setStateRubros(data))
-  
+  const setProductos = () => {
+    getAllProductos().then((resp) => setStateProductos(resp.data));
+  };
+  const setClientes = () => {
+    getAllClientes().then((resp) => setStateClientes(resp.data));
+  };
+  const [stateRubros, setStateRubros] = useState<any>([]);
+
+  const setRubros = () =>
+    getAllRubros().then(({ data }) => setStateRubros(data));
 
   const handleLogin = (obj: any) => {
     authLogin(obj).then((resp) => {
@@ -51,6 +63,8 @@ export default function AuthProvider() {
     <AuthContext.Provider
       value={{
         token,
+        stateClientes,
+        setClientes,
         stateProveedores,
         stateProductos,
         stateRubros,

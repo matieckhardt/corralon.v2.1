@@ -9,6 +9,8 @@ interface AuthContextType {
   stateProductos: [];
   stateRubros: [];
   setProveedores: Function;
+  stateClientes: [];
+  setClientes: Function;
 
 }
 
