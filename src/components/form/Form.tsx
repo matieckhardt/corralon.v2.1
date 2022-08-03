@@ -8,8 +8,8 @@ import { SubmitHandler, UseFormReturn } from "react-hook-form";
 
 import FormInput, { FormInputProps } from "./FormInput";
 
-type ValidChildren<T> = FormInputProps<T>;
-interface FormProps<T> {
+export type ValidChildren<T> = FormInputProps<T>;
+export interface FormProps<T> {
   form: UseFormReturn<T>;
   onSubmit: SubmitHandler<T>;
 }
