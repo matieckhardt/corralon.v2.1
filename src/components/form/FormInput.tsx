@@ -1,31 +1,40 @@
 import TextField, { TextFieldProps } from "@mui/material/TextField";
-import { Path, UseFormGetFieldState, UseFormRegister } from "react-hook-form";
+import {
+  FormState,
+  Path,
+  UseFormGetFieldState,
+  UseFormRegister,
+} from "react-hook-form";
 
 export interface FormInputProps<T> {
-  name?: Path<T>;
+  name: Path<T>;
   validation?: Parameters<UseFormRegister<T>>[1];
-  register?: UseFormRegister<T>;
-  getFieldState?: UseFormGetFieldState<T>;
+  formData?: {
+    formState: FormState<T>;
+    register: UseFormRegister<T>;
+    getFieldState: UseFormGetFieldState<T>;
+  };
 }
 
 export default function FormInput<T>({
   name,
   validation,
-  register,
-  getFieldState,
-  ...props
-}: FormInputProps<T> & TextFieldProps) {
-  if (name && register && getFieldState) {
-    const { error, isTouched } = getFieldState(name);
+  formData,
+  ...rest
+}: FormInputProps<T> & Omit<TextFieldProps, "name">) {
+  if (formData) {
+    const { formState, register, getFieldState } = formData;
+    const registered = register(name, validation);
+    const { error, isTouched } = getFieldState(name, formState);
     return (
       <TextField
+        {...rest}
+        {...registered}
         error={isTouched && Boolean(error)}
         helperText={isTouched && error?.message}
-        {...register(name, validation)}
-        {...props}
       />
     );
   } else {
-    return <TextField {...props} />;
+    return <TextField {...rest} />;
   }
 }
