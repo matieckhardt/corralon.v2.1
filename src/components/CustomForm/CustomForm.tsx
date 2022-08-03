@@ -3,18 +3,24 @@ import { Button } from "@mui/material";
 import { CustomInputText } from "components/CustomInputText/CustomInputText";
 import { CustomSelect } from "components/CustomSelect/CustomSelect";
 import "./styles.css"
+import { useContext } from "react";
+import AuthContext from "contexts/AuthContext";
+import { Box } from "@mui/system";
 
 export const CustomForm = ({ data,initialValues,validationSchema, ...props }: any) => {
+  const {setProveedores} = useContext(AuthContext)
+  const datos = props?.dataEdit?.thisRow
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={ props?.dataEdit ? datos : initialValues}
       validationSchema={validationSchema}
       onSubmit={(values) => {
         props.enviar(values);
       }}
     >
       {({ handleReset }) => (
-        <Form className="form">
+        <Box sx={{ display:'flex', width: '100%', padding: 2,}}>
+        <Form style={{width: "100%"}}>
           {data.map(({ type, name, placeholder, label, options }: any) => {
             if (type === "input" || type === "password" || type === "email") {
               return (
@@ -59,6 +65,10 @@ export const CustomForm = ({ data,initialValues,validationSchema, ...props }: an
               Cancelar
             </Button>
             <Button
+              onClick={() => setTimeout(() => {
+                setProveedores()
+                handleReset()
+              }, 500)}
               variant="contained"
               type="submit"
               sx={{
@@ -73,6 +83,7 @@ export const CustomForm = ({ data,initialValues,validationSchema, ...props }: an
             </Button>
           </div>
         </Form>
+        </Box>
       )}
     </Formik>
   );

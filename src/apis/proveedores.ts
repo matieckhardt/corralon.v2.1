@@ -26,6 +26,13 @@ export const createProveedor = async(obj: any)=>{
     throw new Error("Hubo un error al crear el proveedores");
   }
 }
+export const updateProveedorer = async(obj: any)=>{
+  try {
+    return await axios.put(`${URL_BASE}/proveedores/edit/${obj._id}`,obj)
+  } catch (error) {
+    throw new Error("Hubo un error al crear el proveedores");
+  }
+}
 
 export const deleteProveedorDB = async(obj:any) => {
   try {
