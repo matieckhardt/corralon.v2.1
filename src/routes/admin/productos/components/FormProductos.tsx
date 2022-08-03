@@ -24,9 +24,9 @@ export const FormProductos = () => {
         onSubmit={(values) => createProducto(values)}
         validationSchema={validationSchema}
       >
-        {(formik) => (
-          <Box sx={formGroup}>
-            <Form style={{ width: "100%", display: "flex" }}>
+        {({handleReset}) => (
+          <Form >
+              <Box sx={formGroup}>
               <FormControl sx={{ width: "60%" }}>
                 <CustomSelect label="Seleccione El Proveedor" name="proveedor">
                   <option value="">Seleccione un proveedor</option>
@@ -65,7 +65,7 @@ export const FormProductos = () => {
                 </CustomSelect>
               </FormControl>
               <FormControl sx={{ width: "60%" }}>
-                <CustomSelect label="Rubro" name="proveedor">
+                <CustomSelect label="Rubro" name="rubro">
                   <option value="">Seleccione un rubro</option>
                   {mock.map(({ id, name }) => (
                     <option key={id} value={name}>
@@ -74,17 +74,28 @@ export const FormProductos = () => {
                   ))}
                 </CustomSelect>
               </FormControl>
-              <Button
+          </Box>
+          <Box>
+          <Button
                 type="submit"
                 variant="contained"
-                sx={{ backgroundColor: "#a5339c" }}
+                sx={{ backgroundColor: "#a5339c",margin:2 }}
               >
-                Submit
+                Enviar
               </Button>
-            </Form>
+              <Button
+              onClick={handleReset}
+                type="submit"
+                variant="contained"
+                sx={{ backgroundColor: "#2a74e3",margin:2 }}
+              >
+                Cancelar
+              </Button>
           </Box>
+            </Form>
         )}
       </Formik>
+      
     </Card>
   );
 };
