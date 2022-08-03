@@ -80,3 +80,13 @@ export const deleteUsuarioDB = async(obj:any) => {
     throw new Error("Hubo un error al crear el Usuarios");
   }
 }
+
+///ACOPIOS
+export const getAllAcopios = async() => {
+  try {
+    return await axios.get(`${URL_BASE}/acopio/list`)
+  } catch (error) {
+    throw new Error("Hubo un error al traer la lista de Acopios");
+    
+  }
+}

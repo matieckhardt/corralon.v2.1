@@ -1,7 +1,7 @@
 [
   {
     "type": "input",
-    "name": "material",
+    "name": "nombre",
     "placeholder": "Ingrese nombre del material...",
     "label": "Nombre Del Material",
     "value": "",

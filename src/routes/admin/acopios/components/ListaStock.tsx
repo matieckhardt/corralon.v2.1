@@ -24,39 +24,9 @@ export const ListaStock = () => {
   };
   const columns: GridColDef[] = [
     { field: "_id", hide: true },
-    { field: "nombre", headerName: "Nombre del Material", width: 130 },
-    { field: "razonSocial", headerName: "Razon Social", width: 130 },
-    { field: "localidad", headerName: "Localidad", width: 130 },
-    { field: "tel", headerName: "telefono", width: 130 },
-    { field: "cuit", headerName: "cuit", width: 130 },
-    { field: "tipo", headerName: "tipo", width: 130 },
-    {
-      field: "editar",
-      headerName: "Editar",
-      sortable: false,
-      renderCell: (params) => {
-        const editMaterial = () => {
-          const api: GridApi = params.api;
-          const fields = api
-            .getAllColumns()
-            .map((c) => c.field)
-            .filter((c) => c !== "__check__" && !!c);
-          const thisRow: any = {};
-          fields.forEach((f) => {
-            thisRow[f] = params.getValue(params.id, f);
-          });
-          abrirCerrarModalEditar();
-        };
-        return (
-          <Button
-            sx={{ backgroundColor: "green", color: "white", fontSize:14}}
-            onClick={editMaterial}
-          >
-            Editar
-          </Button>
-        );
-      },
-    }
+    { field: "nombre", headerName: "Material", width: 130 },
+    { field: "razonSocial", headerName: "Stock Necesario", width: 130 },
+    
   ];
 
 
