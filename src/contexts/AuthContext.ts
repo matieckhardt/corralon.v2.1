@@ -15,6 +15,7 @@ interface AuthContextType {
   stateMateriales: [];
   stateUsuarios: [];
   setUsuarios: Function;
+  stateCompras: [];
 
 }
 
