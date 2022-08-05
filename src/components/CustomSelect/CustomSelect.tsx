@@ -14,7 +14,7 @@ export const CustomSelect = ({ label, ...props }: Props) => {
 
   return (
     <FormControl sx={{ width: "auto", marginRight: 5, marginBottom: 3 }}>
-      <Typography>{label}</Typography>
+      <Typography sx={{fontSize:18}}>{label}</Typography>
       <select className="select" {...field} {...props} />
       <ErrorMessage name={props.name} component="span" className="text_error" />
     </FormControl>

@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import AuthContext from "./AuthContext";
+import { getAllCompras } from "apis/compras";
 
 export default function AuthProvider() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export default function AuthProvider() {
   const [stateUsuarios, setStateUsuarios] = useState<any>([]);
   const [stateMateriales, setStateMateriales] = useState<any>([]);
   const [stateRubros, setStateRubros] = useState<any>([]);
+  const [stateCompras, setStateCompras] = useState<any>([]);
 
   const setProveedores = () => {
     getAllProveedores().then((resp) => {
@@ -27,21 +29,26 @@ export default function AuthProvider() {
   };
 
   const setMateriales = () => {
-    getAllMateriales().then((resp) => {
-      setStateMateriales(resp.data);
-    });
+    getAllMateriales().then((resp) => setStateMateriales(resp.data));
   };
+
   const setProductos = () => {
     getAllProductos().then((resp) => setStateProductos(resp.data));
   };
+
   const setClientes = () => {
     getAllClientes().then((resp) => setStateClientes(resp.data));
   };
+  
   const setUsuarios = () => {
     getAllUsuarios().then((resp) => setStateUsuarios(resp.data));
   };
+
   const setRubros = () =>
     getAllRubros().then(({ data }) => setStateRubros(data));
+
+  const setCompras = () =>
+    getAllCompras().then((resp) => setStateCompras(resp.data));
 
   const handleLogin = (obj: any) => {
     authLogin(obj).then((resp) => {
@@ -66,6 +73,7 @@ export default function AuthProvider() {
     setMateriales();
     setClientes();
     setRubros();
+    setCompras();
     if (token) {
       localStorage.setItem("accessToken", token);
     } else {
@@ -78,14 +86,15 @@ export default function AuthProvider() {
       value={{
         token,
         stateClientes,
-        setClientes,
-        setUsuarios,
-        setMateriales,
         stateMateriales,
         stateProveedores,
         stateProductos,
         stateUsuarios,
         stateRubros,
+        stateCompras,
+        setClientes,
+        setUsuarios,
+        setMateriales,
         setToken,
         handleLogin,
         setProveedores,
