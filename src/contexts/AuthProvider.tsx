@@ -4,12 +4,13 @@ import { getAllClientes } from "apis/clientes";
 import { getAllUsuarios } from "apis/usuarios";
 import { getAllMateriales } from "apis/materiales";
 import { getAllRubros } from "apis/rubros";
-import { getAllAcopios } from "apis/acopios";
 import { addTokenCredential, getTokenCredencial } from "helpers";
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import AuthContext from "./AuthContext";
+import { getAllCompras } from "apis/compras";
+import { getAllAcopios } from "apis/acopios";
 
 export default function AuthProvider() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export default function AuthProvider() {
   const [stateRubros, setStateRubros] = useState<any>([]);
   const [stateAcopios, setStateAcopios] = useState<any>([]);
  
+  const [stateCompras, setStateCompras] = useState<any>([]);
 
   const setProveedores = () => {
     getAllProveedores().then((resp) => {
@@ -30,16 +32,17 @@ export default function AuthProvider() {
   };
 
   const setMateriales = () => {
-    getAllMateriales().then((resp) => {
-      setStateMateriales(resp.data);
-    });
+    getAllMateriales().then((resp) => setStateMateriales(resp.data));
   };
+
   const setProductos = () => {
     getAllProductos().then((resp) => setStateProductos(resp.data));
   };
+
   const setClientes = () => {
     getAllClientes().then((resp) => setStateClientes(resp.data));
   };
+  
   const setUsuarios = () => {
     getAllUsuarios().then((resp) => setStateUsuarios(resp.data));
   };
@@ -49,6 +52,9 @@ export default function AuthProvider() {
 
   const setRubros = () =>
     getAllRubros().then(({ data }) => setStateRubros(data));
+
+  const setCompras = () =>
+    getAllCompras().then((resp) => setStateCompras(resp.data));
 
   const handleLogin = (obj: any) => {
     authLogin(obj).then((resp) => {
@@ -74,6 +80,7 @@ export default function AuthProvider() {
     setClientes();
     setAcopios();
     setRubros();
+    setCompras();
     if (token) {
       localStorage.setItem("accessToken", token);
     } else {
@@ -95,6 +102,7 @@ export default function AuthProvider() {
         stateProductos,
         stateUsuarios,
         stateRubros,
+        stateCompras,
         setToken,
         handleLogin,
         setProveedores,

@@ -1,0 +1,65 @@
+
+[
+    {
+      "type": "input",
+      "name": "razonSocial",
+      "placeholder": "Razon",
+      "label": "Razon Social",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "input",
+      "name": "fiscal",
+      "placeholder": "Ingrese una marca...",
+      "label": "Condicion Fiscal",
+      "value": "",
+      "validations":[
+        {
+          "type":"required"
+        }
+      ]
+      
+    },
+    {
+      "type": "input",
+      "name": "tipo",
+      "placeholder": "Tipo proveedor",
+      "label": "Tipo",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    
+    {
+      "type": "input",
+      "name": "factura",
+      "placeholder": "Factura",
+      "label": "Factura",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    }, {
+      "type": "date",
+      "name": "fechaFc",
+      "label": "Fecha",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    }
+    
+  ]
+  
