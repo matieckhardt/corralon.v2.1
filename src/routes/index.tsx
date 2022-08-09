@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import AuthProvider from "contexts/AuthProvider";
 import Acopios from "./admin/acopios";
+import VerAcopios from "./admin/verAcopios";
 import Clientes from "./admin/clientes";
 import PanelCliente from "./admin/clientes/panelCliente";
 import Compras from "./admin/compras";
@@ -31,6 +32,7 @@ export default function AppRouter() {
           <Route path="login" element={<LoginForm />} />
           <Route element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
+            <Route path="verAcopios/:id" element={<VerAcopios />} />
             <Route path="acopios" element={<Acopios />} />
             <Route path="clientes" element={<Clientes />}>
               <Route path="panel" element={<PanelCliente />} />

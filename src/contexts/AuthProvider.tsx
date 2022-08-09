@@ -4,6 +4,7 @@ import { getAllClientes } from "apis/clientes";
 import { getAllUsuarios } from "apis/usuarios";
 import { getAllMateriales } from "apis/materiales";
 import { getAllRubros } from "apis/rubros";
+import { getAllAcopios } from "apis/acopios";
 import { addTokenCredential, getTokenCredencial } from "helpers";
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -19,6 +20,8 @@ export default function AuthProvider() {
   const [stateUsuarios, setStateUsuarios] = useState<any>([]);
   const [stateMateriales, setStateMateriales] = useState<any>([]);
   const [stateRubros, setStateRubros] = useState<any>([]);
+  const [stateAcopios, setStateAcopios] = useState<any>([]);
+ 
 
   const setProveedores = () => {
     getAllProveedores().then((resp) => {
@@ -40,6 +43,10 @@ export default function AuthProvider() {
   const setUsuarios = () => {
     getAllUsuarios().then((resp) => setStateUsuarios(resp.data));
   };
+  const setAcopios = () => {
+    getAllAcopios().then((resp) => setStateAcopios(resp.data));
+  };
+
   const setRubros = () =>
     getAllRubros().then(({ data }) => setStateRubros(data));
 
@@ -65,6 +72,7 @@ export default function AuthProvider() {
     setUsuarios();
     setMateriales();
     setClientes();
+    setAcopios();
     setRubros();
     if (token) {
       localStorage.setItem("accessToken", token);
@@ -81,6 +89,7 @@ export default function AuthProvider() {
         setClientes,
         setUsuarios,
         setMateriales,
+        stateAcopios,
         stateMateriales,
         stateProveedores,
         stateProductos,

@@ -15,7 +15,7 @@ interface AuthContextType {
   stateMateriales: [];
   stateUsuarios: [];
   setUsuarios: Function;
-
+  stateAcopios: [];
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
