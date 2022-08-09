@@ -2,10 +2,12 @@ import { useContext } from "react";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
 import { Button, Card, CardHeader } from "@mui/material";
 import AuthContext from "contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 export const ListaCompras = () => {
   const {stateCompras} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const columns: GridColDef[] = [
     { field: "_id", hide: true },
@@ -29,8 +31,9 @@ export const ListaCompras = () => {
             .filter((c) => c !== "__check__" && !!c);
           const thisRow: any = {};
           fields.forEach((f) => {
-            thisRow[f] = params.getValue(params.id, f);
+            thisRow[f] = params.id;
           });
+          navigate(`/admin/compras/detalles/${thisRow._id}`)
           return thisRow
         };
         return (
@@ -56,7 +59,7 @@ export const ListaCompras = () => {
             .filter((c) => c !== "__check__" && !!c);
           const thisRow: any = {};
           fields.forEach((f) => {
-            thisRow[f] = params.getValue(params.id, f);
+            thisRow[f] = params.id;
           });
         return thisRow
         };
@@ -81,6 +84,7 @@ export const ListaCompras = () => {
     />
     <div style={{ height: 800, width: "100%" }}>
       <DataGrid
+        sx={{fontSize:20}}
         getRowId={(row) => row._id}
         rows={stateCompras}
         columns={columns}

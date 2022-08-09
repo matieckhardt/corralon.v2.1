@@ -4,7 +4,7 @@ import "./styles.css";
 interface Props {
   label: string;
   name: string;
-  type?: "text" | "email" | "password" | "date";
+  type?: "text" | "email" | "password" | "date" | "number";
   placeholder?: string;
   [x: string]: any;
 }

@@ -1,6 +1,5 @@
 import { Box, FormControl } from "@mui/material";
 import { CustomInputText, CustomSelect } from "components";
-import React from "react";
 
 const FormAgregarProducto = ({productos,producto}:any) => {
   return (

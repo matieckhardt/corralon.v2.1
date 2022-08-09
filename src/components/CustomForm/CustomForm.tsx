@@ -21,8 +21,8 @@ export const CustomForm = ({ data,initialValues,validationSchema, ...props }: an
       {({ handleReset }) => (
         <Box sx={{ display:'flex', width: '100%', padding: 2,}}>
         <Form style={{width: "100%"}}>
-          {data.map(({ type, name, placeholder, label, options }: any) => {
-            if (type === "input" || type === "password" || type === "email") {
+          {data?.map(({ type, name, placeholder, label, options }: any) => {
+            if (type === "input" || type === "password" || type === "email" || "number" || "date") {
               return (
                 <CustomInputText
                   key={name}
