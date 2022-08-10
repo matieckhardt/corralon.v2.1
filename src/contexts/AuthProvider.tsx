@@ -10,6 +10,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 import AuthContext from "./AuthContext";
 import { getAllCompras } from "apis/compras";
+import { getAllAcopios } from "apis/acopios";
 
 export default function AuthProvider() {
   const navigate = useNavigate();
@@ -20,6 +21,8 @@ export default function AuthProvider() {
   const [stateUsuarios, setStateUsuarios] = useState<any>([]);
   const [stateMateriales, setStateMateriales] = useState<any>([]);
   const [stateRubros, setStateRubros] = useState<any>([]);
+  const [stateAcopios, setStateAcopios] = useState<any>([]);
+ 
   const [stateCompras, setStateCompras] = useState<any>([]);
 
   const setProveedores = () => {
@@ -42,6 +45,9 @@ export default function AuthProvider() {
   
   const setUsuarios = () => {
     getAllUsuarios().then((resp) => setStateUsuarios(resp.data));
+  };
+  const setAcopios = () => {
+    getAllAcopios().then((resp) => setStateAcopios(resp.data));
   };
 
   const setRubros = () =>
@@ -72,6 +78,7 @@ export default function AuthProvider() {
     setUsuarios();
     setMateriales();
     setClientes();
+    setAcopios();
     setRubros();
     setCompras();
     if (token) {
@@ -86,15 +93,16 @@ export default function AuthProvider() {
       value={{
         token,
         stateClientes,
+        setClientes,
+        setUsuarios,
+        setMateriales,
+        stateAcopios,
         stateMateriales,
         stateProveedores,
         stateProductos,
         stateUsuarios,
         stateRubros,
         stateCompras,
-        setClientes,
-        setUsuarios,
-        setMateriales,
         setToken,
         handleLogin,
         setProveedores,
