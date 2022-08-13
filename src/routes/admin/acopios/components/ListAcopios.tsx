@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Button, Card, CardHeader } from "@mui/material";
+import { Button, Card, CardHeader, Typography } from "@mui/material";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import AuthContext from "contexts/AuthContext";
@@ -12,39 +12,47 @@ export const ListAcopios = () => {
     const {stateAcopios,} = useContext(AuthContext);
 
     const columns: GridColDef[] = [
-        { field: "_id", hide: true },
-        { field: "createdAt", headerName: "fecha ventas", width: 160 },
-        { field: "cliente", headerName: "cliente", width: 150 },
-        { field: "", headerName: "ultimo retiro", width: 180 },
-        {
-            field: "acciones",
-            headerName: "Acciones",
-            sortable: false,
-            width: 120,
-            renderCell: (params) => {
-                const editMaterial = () => {
-                  const api: GridApi = params.api;
-                  const fields = api
-                    .getAllColumns()
-                    .map((c) => c.field)
-                    .filter((c) => c !== "__check__" && !!c);
-                  const thisRow: any = {};
-                  fields.forEach((f) => {
-                    thisRow[f] = params.getValue(params.id, f);
-                  });
-              };
-              return (
-                <Link  style={{ textDecoration: "none"}} to={`/admin/verAcopios/${params.id}`}>
-                <Button
-                  sx={{ backgroundColor: "#20c997", color: "white", fontSize: 10, minWidth: "100px" }}                 
-                >
-                  Ver Acopio 
-                  <VisibilityIcon sx={{ fontSize: 12, marginLeft: 1 }} />
-                </Button>
-                </Link>
-              );
-            },
-          },
+      { field: "_id", hide: true },
+      {
+        field: "createdAt",
+        headerName: "fecha ventas",
+        width: 140,
+        renderCell: (params) => {
+          return (
+            <Typography sx={{ fontSize: 16, minWidth: "100px" }}>
+              {new Date(params.formattedValue).toLocaleDateString()}
+            </Typography>
+          );
+        },
+      },
+      { field: "cliente", headerName: "cliente", width: 180 },
+      { field: "", headerName: "ultimo retiro", width: 180 },
+      {
+        field: "acciones",
+        headerName: "Acciones",
+        sortable: false,
+        width: 120,
+        renderCell: (params) => {
+          return (
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/admin/verAcopios/${params.id}`}
+            >
+              <Button
+                sx={{
+                  backgroundColor: "#20c997",
+                  color: "white",
+                  fontSize: 12,
+                  minWidth: "100px",
+                }}
+              >
+                Ver Acopio
+                <VisibilityIcon sx={{ fontSize: 12, marginLeft: 1 }} />
+              </Button>
+            </Link>
+          );
+        },
+      },
     ];
     const top100Films = [
         { title: 'The Shawshank Redemption', year: 1994 },
