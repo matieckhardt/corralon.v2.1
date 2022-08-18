@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
-import { Button, Card, CardHeader, Modal } from "@mui/material";
+import { Button, Card, CardHeader, Modal, Typography } from "@mui/material";
 import formJson from "./data/input-materiales.json";
 import { Box } from "@mui/system";
 import { CustomForm } from "components/CustomForm/CustomForm";
@@ -29,10 +29,10 @@ export const ListaMateriales = () => {
   };
   const columns: GridColDef[] = [
     { field: "_id", hide: true },
-    { field: "nombre", headerName: "Nombre del Material", width: 130 },
-    { field: "precio", headerName: "Precio", width: 130 },
-    { field: "rubro", headerName: "Rubro", width: 130 },
-    { field: "stock", headerName: "Stock", width: 90 },
+    { field: "nombre", headerName: "Nombre del Material", width: 300 },
+    { field: "precio", headerName: "Precio", width: 160 },
+    { field: "rubro", headerName: "Rubro", width: 160 },
+    { field: "stock", headerName: "Stock", width: 120 },
     {
       field: "editar",
       headerName: "Editar",
@@ -53,7 +53,7 @@ export const ListaMateriales = () => {
         };
         return (
           <Button
-            sx={{ backgroundColor: "green", color: "white", fontSize: 14 }}
+            sx={{ backgroundColor: "green", color: "white", fontSize: 12 }}
             onClick={editMaterial}
           >
             Editar
@@ -86,7 +86,7 @@ export const ListaMateriales = () => {
 
         return (
           <Button
-            sx={{ backgroundColor: "#f53535", color: "white", fontSize: 14 }}
+            sx={{ backgroundColor: "#f53535", color: "white", fontSize: 12 }}
             onClick={deleteMaterial}
           >
             Eliminar
@@ -98,7 +98,7 @@ export const ListaMateriales = () => {
 
   const bodyEditar = (
     <Box sx={styles.modal}>
-      <h3>Editar Material</h3>
+      <Typography variant="h3">Editar Material</Typography>
       <CustomForm
         data={formJson}
         cerrar={abrirCerrarModalEditar}
@@ -111,14 +111,15 @@ export const ListaMateriales = () => {
   return (
     <Card sx={{ margin: 2 }}>
       <CardHeader
-        sx={{ backgroundColor: "green", color: "white" }}
-        title="Lista de Materiales"
+        title={<Typography variant="h3">Lista de Materiales</Typography>}
       />
       <div style={{ height: 800, width: "100%" }}>
         <DataGrid
+        sx={{fontSize:20}}
           getRowId={(row) => row._id}
           rows={stateMateriales}
           columns={columns}
+          density="comfortable"
         />
         <Modal open={modalEditar} onClose={abrirCerrarModalEditar}>
           {bodyEditar}

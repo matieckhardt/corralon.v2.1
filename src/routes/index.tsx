@@ -22,6 +22,7 @@ import VentaRapida from "./admin/ventaRapida";
 import Home from "./home";
 import NotFound from "./NotFound";
 import LoginForm from "./admin/login";
+import DetalleCompra from "./admin/compras/components/DetalleCompra";
 
 export default function AppRouter() {
   return (
@@ -38,6 +39,7 @@ export default function AppRouter() {
               <Route path="panel" element={<PanelCliente />} />
             </Route>
             <Route path="compras" element={<Compras />} />
+            <Route path="compras/detalles/:id" element={<DetalleCompra />} />
             <Route path="comprobantes" element={<Comprobantes />} />
             <Route path="listaPrecios" element={<ListaPrecios />} />
             <Route path="materiales" element={<Materiales />} />

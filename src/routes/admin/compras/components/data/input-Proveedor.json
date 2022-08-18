@@ -15,7 +15,6 @@
     {
       "type": "input",
       "name": "fiscal",
-      "placeholder": "Ingrese una marca...",
       "label": "Condicion Fiscal",
       "value": "",
       "validations":[
@@ -49,7 +48,8 @@
           "type": "required"
         }
       ]
-    }, {
+    }, 
+    {
       "type": "date",
       "name": "fechaFc",
       "label": "Fecha",
@@ -59,7 +59,30 @@
           "type": "required"
         }
       ]
+    },
+    {
+      "type": "input",
+      "name": "precio",
+      "label": "Preio",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "input",
+      "name": "marca",
+      "label": "Marca",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
     }
+    
     
   ]
   

@@ -22,7 +22,7 @@ export const CustomForm = ({ data,initialValues,validationSchema, ...props }: an
         <Box sx={{ display:'flex', width: '100%', padding: 2,}}>
         <Form style={{width: "100%"}}>
           {data?.map(({ type, name, placeholder, label, options }: any) => {
-            if (type === "input" || type === "password" || type === "email") {
+            if (type === "input" || type === "password" || type === "email" || "number" || "date") {
               return (
                 <CustomInputText
                   key={name}
@@ -57,8 +57,7 @@ export const CustomForm = ({ data,initialValues,validationSchema, ...props }: an
               variant="contained"
               type="submit"
               sx={{
-                marginRigth: 4,
-                fontSize:16,
+                fontSize:14,
                 backgroundColor: "#0986cf",
               }}
             >
@@ -72,11 +71,9 @@ export const CustomForm = ({ data,initialValues,validationSchema, ...props }: an
               variant="contained"
               type="submit"
               sx={{
-                marginRigth: 4,
-                fontSize:18,
+                fontSize:14,
                 backgroundColor: "green",
-                width:100,
-                height:50
+                
               }}
             >
               Guardar

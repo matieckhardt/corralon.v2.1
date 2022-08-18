@@ -1,4 +1,4 @@
-import { Button, Card, CardHeader, FormControl } from "@mui/material";
+import { Button, Card, CardHeader, Divider, FormControl, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { Formik, Form } from "formik";
 import { formGroup, inputGrup } from "./styles";
@@ -15,9 +15,9 @@ export const FormProductos = () => {
   return (
     <Card sx={{ margin: 2 }}>
       <CardHeader
-        sx={{ backgroundColor: "#a5339c", color: "white" }}
-        title="Alta de Productos"
+       title={<Typography variant="h3">Alta de Productos</Typography>}
       />
+      <Divider />
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => handleCreateProduct(values)}

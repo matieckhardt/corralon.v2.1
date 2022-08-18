@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
-import { Button, Card, CardHeader, Modal } from "@mui/material";
+import { Button, Card, CardHeader, Modal, Typography } from "@mui/material";
 import formJson from "./data/input-proveedores.json";
 import { Box } from "@mui/system";
 import { CustomForm } from "components/CustomForm/CustomForm";
@@ -29,14 +29,14 @@ export const Listaproveedores = () => {
   };
   const columns: GridColDef[] = [
     { field: "_id", hide: true },
-    { field: "nombre", headerName: "Nombre del Proveedor", width: 130 },
-    { field: "razonSocial", headerName: "Razon Social", width: 130 },
-    { field: "fiscal", headerName: "Condicion Fiscal", width: 130 },
-    { field: "localidad", headerName: "Localidad", width: 90 },
+    { field: "nombre", headerName: "Nombre del Proveedor", width: 180 },
+    { field: "razonSocial", headerName: "Razon Social", width: 220 },
+    { field: "fiscal", headerName: "Condicion Fiscal", width: 220 },
+    { field: "localidad", headerName: "Localidad", width: 150 },
     { field: "tel", headerName: "telefono", width: 130 },
     { field: "cuit", headerName: "cuit", width: 130 },
-    { field: "tipo", headerName: "tipo", width: 80 },
-    { field: "contacto", headerName: "Contacto", width: 100 },
+    { field: "tipo", headerName: "tipo", width: 130 },
+    { field: "contacto", headerName: "Contacto", width: 130 },
     {
       field: "editar",
       headerName: "Editar",
@@ -57,7 +57,7 @@ export const Listaproveedores = () => {
         };
         return (
           <Button
-            sx={{ backgroundColor: "green", color: "white", fontSize:14}}
+            sx={{ backgroundColor: "green", color: "white", fontSize:12}}
             onClick={editProveedor}
           >
             Editar
@@ -89,7 +89,7 @@ export const Listaproveedores = () => {
 
         return (
           <Button
-            sx={{ backgroundColor: "#f53535", color: "white", fontSize:14 }}
+            sx={{ backgroundColor: "#f53535", color: "white", fontSize:12 }}
             onClick={deleteProveedor}
           >
             Eliminar
@@ -101,7 +101,7 @@ export const Listaproveedores = () => {
 
   const bodyEditar = (
     <Box sx={styles.modal}>
-      <h3>Editar Proveedor</h3>
+      <Typography variant="h3">Editar de Proveedor</Typography>
       <CustomForm data={formJson} cerrar={abrirCerrarModalEditar} dataEdit={dataEdit} enviar={updateProveedorer} />
     </Box>
   );
@@ -109,14 +109,15 @@ export const Listaproveedores = () => {
   return (
     <Card sx={{ margin: 2 }}>
     <CardHeader
-      sx={{ backgroundColor: "green", color: "white" }}
-      title="Lista de Proveedores"
+      title={<Typography variant="h3">Lista de Proveedores</Typography>}
     />
     <div style={{ height: 800, width: "100%" }}>
       <DataGrid
+        sx={{fontSize:16}}
         getRowId={(row) => row._id}
         rows={stateProveedores}
         columns={columns}
+        density="comfortable"
       />
       <Modal open={modalEditar} onClose={abrirCerrarModalEditar}>
         {bodyEditar}
