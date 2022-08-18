@@ -4,7 +4,7 @@ import {
   validationSchema,
 } from "../validations/validationsSchema";
 import formJson from "./data/input-materiales.json";
-import { CardHeader } from "@mui/material";
+import { CardHeader, Divider, Typography } from "@mui/material";
 import { CustomForm } from "components/CustomForm/CustomForm";
 import { createMaterial } from "apis/materiales";
 
@@ -13,11 +13,11 @@ export const FormMateriales = () => {
     createMaterial(obj).then((resp) => console.log(resp));
   };
   return (
-    <Card sx={{ width: "97%", margin: "auto" }}>
+    <Card sx={{ width: "97%", margin: "auto", marginTop:2 }}>
       <CardHeader
-        sx={{ backgroundColor: "green", color: "white" }}
-        title="Alta de Materiales"
+        title={<Typography variant="h3">Alta de Materiales</Typography>}
       />
+      <Divider />
       <CustomForm
         data={formJson}
         enviar={handleCreateMaterial}

@@ -2,8 +2,7 @@ import { Box } from "@mui/material";
 import FormCompras from "./components/FormCompras";
 import { ListaCompras } from "./components/ListaCompras";
 
-
-const Proveedores = () => {
+const Compras = () => {
   return (
     <Box>
       <FormCompras />
@@ -12,4 +11,4 @@ const Proveedores = () => {
   );
 };
 
-export default Proveedores;
+export default Compras;

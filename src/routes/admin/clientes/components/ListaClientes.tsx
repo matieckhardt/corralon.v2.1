@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useContext } from "react";
 import { DataGrid, GridApi, GridColDef } from "@mui/x-data-grid";
-import { Button, Card, CardHeader, Modal } from "@mui/material";
+import { Button, Card, CardHeader, Modal, Typography } from "@mui/material";
 import formJson from "./data/input-clientes.json";
 import { Box } from "@mui/system";
 import { CustomForm } from "components/CustomForm/CustomForm";
@@ -29,13 +30,13 @@ export const ListaClientes = () => {
   };
   const columns: GridColDef[] = [
     { field: "_id", hide: true },
-    { field: "nombre", headerName: "Nombre del Cliente", width: 130 },
-    { field: "razonSocial", headerName: "Razon Social", width: 130 },
-    { field: "fiscal", headerName: "Condicion Fiscal", width: 130 },
-    { field: "localidad", headerName: "Localidad", width: 90 },
-    { field: "tel", headerName: "telefono", width: 130 },
-    { field: "dni", headerName: "dni/cuit", width: 130 },
-    { field: "observaciones", headerName: "observaciones", width: 100 },
+    { field: "nombre", headerName: "Nombre del Cliente", width: 160 },
+    { field: "razonSocial", headerName: "Razon Social", width: 160 },
+    { field: "fiscal", headerName: "Condicion Fiscal", width: 180 },
+    { field: "localidad", headerName: "Localidad", width: 180 },
+    { field: "tel", headerName: "telefono", width: 150 },
+    { field: "dni", headerName: "dni/cuit", width: 150 },
+    { field: "observaciones", headerName: "observaciones", width: 180 },
     {
       field: "editar",
       headerName: "Editar",
@@ -101,7 +102,7 @@ export const ListaClientes = () => {
 
   const bodyEditar = (
     <Box sx={styles.modal}>
-      <h3>Editar Proveedor</h3>
+      <Typography variant="h2" gutterBottom>Editar Clientes</Typography>
       <CustomForm
         data={formJson}
         cerrar={abrirCerrarModalEditar}
@@ -117,11 +118,12 @@ export const ListaClientes = () => {
   return (
     <Card sx={{ margin: 2 }}>
       <CardHeader
-        sx={{ backgroundColor: "#1976d2", color: "white" }}
-        title="Lista de Proveedores"
+        sx={{ color: "black" }}
+        title={ <Typography variant="h3" gutterBottom>Lista de Cliente</Typography>}
       />
       <div style={{ height: 800, width: "100%" }}>
         <DataGrid
+         sx={{ fontSize: 18 }}
           getRowId={(row) => row._id}
           rows={stateClientes}
           columns={columns}

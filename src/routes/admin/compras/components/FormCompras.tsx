@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext, useEffect, useState } from "react";
-import { Box, Button, Card, CardHeader } from "@mui/material";
+import { Box, Button, Card, CardHeader, Divider, Typography } from "@mui/material";
 import { CustomInputText, CustomSelect } from "components";
 import AuthContext from "contexts/AuthContext";
 import { Form, Formik } from "formik";
@@ -12,6 +13,7 @@ const FormCompras = () => {
   const [producto, setProducto] = useState<any>({});
   const [proveedorNombre, setProveedorNombre] = useState({} as any);
   const [productoNombre, setProductoNombre] = useState({} as any);
+  const [carritoCompras, setCarritoCompras] = useState([]);
 
   let proveedorSelectd = stateProveedores.find(
     (obj: any) => obj.nombre === proveedorNombre
@@ -19,6 +21,9 @@ const FormCompras = () => {
   let productoSelected = stateProductos.find(
     (obj: any) => obj.nombre === productoNombre
   );
+  const addCart = (data: any) => {
+    setCarritoCompras(prev => ({...prev, data}));
+  }
 
   useEffect(() => {
     setProveedor(proveedorSelectd);
@@ -28,9 +33,9 @@ const FormCompras = () => {
   return (
     <Card sx={{ margin: 2 }}>
       <CardHeader
-        sx={{ backgroundColor: "#ffc107", color: "white" }}
-        title="Alta de Productos"
+      title={<Typography variant="h3">Alta de Productos</Typography>}
       />
+      <Divider />
       <Formik
         enableReinitialize
         initialValues={{
@@ -55,7 +60,7 @@ const FormCompras = () => {
         }}
         // validationSchema={validationSchema}
         onSubmit={(values) => {
-          console.log(values);
+          // console.log(values);
         }}
       >
         {({ values, handleChange }) => {
@@ -167,6 +172,7 @@ const FormCompras = () => {
                       fontSize: 14,
                       backgroundColor: "green",
                     }}
+                    onClick={() => addCart(values)}
                   >
                     Agregar
                   </Button>

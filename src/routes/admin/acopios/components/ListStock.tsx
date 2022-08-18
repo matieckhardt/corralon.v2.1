@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext } from "react";
-import { Card, CardHeader } from "@mui/material";
+import { Card, CardHeader, Divider, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import AuthContext from "contexts/AuthContext";
 import TextField from '@mui/material/TextField';
@@ -12,14 +13,8 @@ interface Acopio {
 export const ListStock = (props:{acopio:Acopio}) => {
     const {stateAcopios} = useContext(AuthContext);
 
-//     const acopios = stateAcopios.map(obj =>obj)
-//     const dato = acopios.map((obj1) => {
-//   const {materialesAcopio}: any = obj1
-//   let final = materialesAcopio.map( (m:any) => console.log(m.mercaderia))
-// });
 const {acopio} = props
     const columns: GridColDef[] = [
-        // { field: "_id", hide: true },
         { field: "mercaderia", headerName: "Material", width: 300 },
         { field: "cantidadFaltante", headerName: "Stock Necesario", width: 300 },
     ];
@@ -32,10 +27,11 @@ const {acopio} = props
 
     return (
         <Card sx={{ margin: 2, width: "40%" }}>
+          <Divider />
           <CardHeader
-            sx={{ backgroundColor: "#20c997", color: "white" }}
-            title="Listado De Stock"
+            title={<Typography variant="h3">Listado De Stock</Typography>}
           />
+          <Divider />
           <div style={{ display: 'flex', justifyContent: "end", alignItems: "center"}}>
             <b>Search:</b>
          <Autocomplete
@@ -56,10 +52,11 @@ const {acopio} = props
          </div>
    <div style={{ height: 800, width: "100%" }}>
       <DataGrid
-      sx={{ fontSize: 20 }}
+        sx={{ fontSize: 20 }}
         getRowId={(row) =>  uuidv4()}
         rows={acopio ? acopio.materialesAcopio : []}
         columns={columns}
+        density="comfortable"
       />
     </div>
         </Card>
