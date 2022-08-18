@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 export const ListAcopios = () => {
   const { stateAcopios } = useContext(AuthContext);
-
   const columns: GridColDef[] = [
     { field: "_id", hide: true },
     {
